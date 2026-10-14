@@ -1,0 +1,19 @@
+{
+  "name": "gerel-english",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт-визитка репетитора английского Герел",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
