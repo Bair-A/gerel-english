@@ -9,7 +9,7 @@ export default function Header() {
         <a href="#formats">Цены</a>
         <a href="#about">Обо мне</a>
         <a href="#reviews">Отзывы</a>
-        <a href={contacts.telegramUrl} className="btn btn-outline btn-sm">
+        <a href={contacts.telegramUrl} className="btn btn-dark btn-sm">
           Написать в Telegram
         </a>
       </nav>
