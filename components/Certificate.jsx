@@ -25,8 +25,7 @@ export default function Certificate() {
               ))}
             </div>
             <p className="caption">
-              Результат можно проверить на сайте Cambridge:{" "}
-              <a href={certificate.verifyUrl}>cambridgeenglish.org/verifiers</a>
+              Номер для проверки результата на сайте Cambridge сообщу по запросу.
             </p>
           </div>
           <figure className="certificate-scan">

@@ -1,28 +1,27 @@
-import { contacts } from "../data/content";
 import { asset } from "../lib/asset";
+
+const facts = ["Cambridge C1 Advanced, Grade A (уровень C2)", "Преподаю с 2021 года", "Онлайн"];
 
 export default function Hero() {
   return (
     <section className="container hero">
       <div className="hero-text">
-        <div className="chips">
-          <span className="chip chip-accent">Cambridge C1 Advanced · Grade A, уровень C2</span>
-          <span className="chip">Преподаю с 2021 года</span>
-          <span className="chip">Онлайн</span>
-        </div>
-        <h1>Английский с&nbsp;Герел: интересно, в&nbsp;вашем темпе и&nbsp;без страха ошибок</h1>
+        {/* Заголовок не виден на странице, но нужен поисковикам и экранным дикторам */}
+        <h1 className="visually-hidden">Герел — репетитор английского онлайн</h1>
         <p className="lead">
           Уроки по британским учебникам Oxford и Cambridge на интерактивной доске, с играми для
           запоминания слов и живыми материалами — сериалами, подкастами, статьями.
         </p>
         <div className="actions">
-          <a href="#contact" className="btn btn-dark">
+          <a href="#contact" className="btn btn-outline">
             Записаться на пробный урок
           </a>
-          <a href={contacts.profiUrl} className="btn btn-outline">
-            Мой профиль на Profi.ru
-          </a>
         </div>
+        <ul className="hero-facts">
+          {facts.map((fact) => (
+            <li key={fact}>{fact}</li>
+          ))}
+        </ul>
       </div>
       <div className="hero-photo">
         <img src={asset("/assets/gerel.jpg")} alt="Герел, репетитор английского" />

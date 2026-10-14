@@ -15,7 +15,6 @@ export default function Contact() {
               <Icon name="telegram" size={22} />
               Написать в Telegram
             </a>
-            <div className="contact-handle">@{contacts.telegramUser}</div>
             <a href={contacts.profiUrl} className="btn btn-outline">
               Записаться через Profi.ru
             </a>

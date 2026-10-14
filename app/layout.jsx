@@ -5,7 +5,7 @@ import "./globals.css";
 // поэтому посетители не обращаются к серверам Google.
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });

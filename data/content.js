@@ -105,7 +105,6 @@ export const certificate = {
     { name: "Listening", value: 201 },
     { name: "Speaking", value: 205, highlight: true },
   ],
-  verifyUrl: "https://www.cambridgeenglish.org/verifiers",
 };
 
 export const reviews = [
