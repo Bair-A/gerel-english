@@ -11,7 +11,7 @@ export default function Contact() {
             <p>Напишите мне в Telegram — расскажите о цели, и подберём удобное время для пробного урока.</p>
           </div>
           <div className="contact-actions">
-            <a href={contacts.telegramUrl} className="btn btn-dark btn-lg">
+            <a href={contacts.telegramUrl} className="btn btn-outline btn-lg">
               <Icon name="telegram" size={22} />
               Написать в Telegram
             </a>
