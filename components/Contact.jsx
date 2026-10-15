@@ -8,7 +8,7 @@ export default function Contact() {
         <div className="contact">
           <div className="contact-text">
             <h2>Запишитесь на пробный урок</h2>
-            <p>Напишите мне в Telegram — расскажите о цели, и подберём удобное время для пробного урока.</p>
+            <p>Напишите мне в Telegram или на Profi.ru — расскажите о цели, и подберём удобное время для пробного урока.</p>
           </div>
           <div className="contact-actions">
             <a href={contacts.telegramUrl} className="btn btn-dark btn-lg">

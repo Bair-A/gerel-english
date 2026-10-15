@@ -1,7 +1,7 @@
 import { asset } from "../lib/asset";
 
 const facts = [
-  { text: "Cambridge C1 Advanced · Grade A, уровень C2", accent: true },
+  { text: "Cambridge C1 Advanced · Grade A, уровень\u00a0C2", accent: true },
   { text: "Преподаю с 2021 года" },
   { text: "Онлайн" },
 ];
