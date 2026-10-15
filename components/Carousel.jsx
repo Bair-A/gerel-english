@@ -1,15 +1,42 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { asset } from "../lib/asset";
 
-// Карусель слайдов: листается стрелками, точками и свайпом (на телефоне).
+// Карусель слайдов: листается сама, а также стрелками, точками и свайпом (на телефоне).
+// Сама листается раз в AUTOPLAY_MS; останавливается, пока на неё навели мышь или палец,
+// и не листается у тех, кто отключил анимации в системе.
+const AUTOPLAY_MS = 5000;
+
 export default function Carousel({ slides, label }) {
   const trackRef = useRef(null);
   const [current, setCurrent] = useState(0);
   // Слайд, к которому едет прокрутка: чтобы быстрые клики по стрелке не терялись во время анимации
   const targetRef = useRef(0);
   const settleTimer = useRef(null);
+  const [playing, setPlaying] = useState(true);
+  const holdRef = useRef(false); // мышь над каруселью или фокус внутри
+  const visibleRef = useRef(false); // карусель видна на экране
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPlaying(false);
+    const observer = new IntersectionObserver(([entry]) => {
+      visibleRef.current = entry.isIntersecting;
+    });
+    observer.observe(trackRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Таймер перезапускается при каждой смене слайда, в том числе ручной
+  useEffect(() => {
+    if (!playing) return;
+    const id = setInterval(() => {
+      if (holdRef.current || !visibleRef.current || document.hidden) return;
+      const next = targetRef.current + 1;
+      goTo(next >= slides.length ? 0 : next);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [playing, current]);
 
   function goTo(index) {
     const track = trackRef.current;
@@ -31,7 +58,18 @@ export default function Carousel({ slides, label }) {
   }
 
   return (
-    <div className="carousel" role="region" aria-roledescription="карусель" aria-label={label}>
+    <div
+      className="carousel"
+      role="region"
+      aria-roledescription="карусель"
+      aria-label={label}
+      onMouseEnter={() => (holdRef.current = true)}
+      onMouseLeave={() => (holdRef.current = false)}
+      onTouchStart={() => (holdRef.current = true)}
+      onTouchEnd={() => (holdRef.current = false)}
+      onFocus={() => (holdRef.current = true)}
+      onBlur={() => (holdRef.current = false)}
+    >
       <div className="carousel-track" ref={trackRef} onScroll={onScroll}>
         {slides.map((slide, i) => (
           <figure
@@ -83,6 +121,23 @@ export default function Carousel({ slides, label }) {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M9 18l6-6-6-6" />
           </svg>
+        </button>
+        <button
+          type="button"
+          className="carousel-arrow carousel-pause"
+          onClick={() => setPlaying(!playing)}
+          aria-label={playing ? "Остановить автопрокрутку" : "Включить автопрокрутку"}
+        >
+          {playing ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
         </button>
       </div>
     </div>
