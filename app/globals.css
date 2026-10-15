@@ -286,7 +286,9 @@ h3 {
 }
 /* Карусель */
 .carousel {
+  width: 100%;
   max-width: 880px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -322,10 +324,13 @@ h3 {
   flex-direction: column;
   gap: 6px;
   max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
 .carousel-controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
 }
 .carousel-arrow {
