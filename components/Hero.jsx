@@ -1,22 +1,9 @@
 import { asset } from "../lib/asset";
 
-const facts = [
-  { text: "Cambridge C1 Advanced · Grade A, уровень\u00a0C2", accent: true },
-  { text: "Преподаю с 2021 года" },
-  { text: "Онлайн" },
-];
-
 export default function Hero() {
   return (
     <section className="container hero">
       <div className="hero-text">
-        <ul className="chips">
-          {facts.map((fact) => (
-            <li key={fact.text} className={fact.accent ? "chip chip-accent" : "chip"}>
-              {fact.text}
-            </li>
-          ))}
-        </ul>
         <h1>Английский без страха ошибок и&nbsp;скучной зубрёжки</h1>
         <p className="lead">
           Уроки по британским учебникам Oxford и Cambridge на интерактивной доске, с играми для

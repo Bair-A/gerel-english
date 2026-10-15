@@ -17,12 +17,12 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Certificate />
         <Help />
         <Method />
         <Steps />
         <Prices />
         <About />
-        <Certificate />
         <Reviews />
         <Faq />
         <Contact />
