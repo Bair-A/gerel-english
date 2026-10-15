@@ -1,5 +1,3 @@
-import { contacts } from "../data/content";
-
 export default function Header() {
   return (
     <header className="container header">
@@ -9,9 +7,6 @@ export default function Header() {
         <a href="#formats">Цены</a>
         <a href="#about">Обо мне</a>
         <a href="#reviews">Отзывы</a>
-        <a href={contacts.telegramUrl} className="btn btn-outline btn-sm">
-          Написать в Telegram
-        </a>
       </nav>
     </header>
   );
